@@ -1,16 +1,11 @@
-![cf](http://i.imgur.com/7v5ASc8.png) Code Fellows Seattle, Javascript 401n1
+![cf](http://i.imgur.com/7v5ASc8.png) Code Fellows Seattle, Javascript 401d10
 =====================================
 > Advanced Software Development  
 
-[![](https://img.shields.io/badge/YouTube-401n1%20Lectures-red.svg)](https://www.youtube.com/playlist?list=PLVngfM2hsbi86RFbvl4BPeaEu69IuaxGD)
+[![](https://img.shields.io/badge/YouTube-401d10-red.svg)](https://www.youtube.com/playlist?list=PLVngfM2hsbi86RFbvl4BPeaEu69IuaxGD)
 [![](https://img.shields.io/badge/canvas-401d10-blue.svg)](https://canvas.instructure.com/courses/1046705/modules)
-
-### 401n1 Resources
-<!--* [401n1 youtube videos](https://www.youtube.com/playlist?list=PLVngfM2hsbi86RFbvl4BPeaEu69IuaxGD)-->
-<!--* [401n1 code assignment repositorys](https://github.com/codefellows-seattle-javascript-401n1)-->
-<!--* [401n1 canvas](https://canvas.instructure.com/courses/1024929): Find readings, quizzes, survays, labs, ect...-->
-<!--* [401n1 slack chatroom](https://codefellows.slack.com/messages/sea-401n1-javascript/): Class Chat-->
-<!--* [401n1 prework repository](https://github.com/codefellows/code-401-JS-prework)-->
+[![](https://img.shields.io/badge/Labs-401d10-yellow.svg)](https://github.com/codefellows-seattle-javascript-401d10)
+[![](https://img.shields.io/badge/slack-401d10-orange.svg)](https://codefellows.slack.com/messages/sea-javascript-401d10/)
 
 # Welcome
 
