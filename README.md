@@ -1,4 +1,4 @@
-![Code Fellows](assets/shield.png) Code Fellows Seattle, Javascript 401n1
+![cf](http://i.imgur.com/7v5ASc8.png) Code Fellows Seattle, Javascript 401n1
 =====================================
 > Advanced Software Development  
 
@@ -6,7 +6,7 @@
 [![](https://img.shields.io/badge/YouTube-401n1%20Lectures-red.svg)](https://www.youtube.com/playlist?list=PLVngfM2hsbi_AxXqyfUNJWVJOhYsDKNX8)
 
 ### 401n1 Resources
-<!--* [401n1 youtube videos](https://www.youtube.com/playlist?list=PLVngfM2hsbi_AxXqyfUNJWVJOhYsDKNX8)-->
+* [401n1 youtube videos](https://www.youtube.com/playlist?list=PLVngfM2hsbi86RFbvl4BPeaEu69IuaxGD)
 <!--* [401n1 code assignment repositorys](https://github.com/codefellows-seattle-javascript-401n1)-->
 <!--* [401n1 canvas](https://canvas.instructure.com/courses/1024929): Find readings, quizzes, survays, labs, ect...-->
 <!--* [401n1 slack chatroom](https://codefellows.slack.com/messages/sea-401n1-javascript/): Class Chat-->
