@@ -32,7 +32,7 @@ app.post('/api/note', jsonParser, function(req, res, next){
 
 app.get('/api/note', function(req, res, next){
   debug('hit route GET /api/note');
-  Note.fetchNote(req.url.query.id)
+  Note.fetchNote(req.query.id)
   .then( note => res.json(note))
   .catch( err => next(err));
 });
