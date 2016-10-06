@@ -1,5 +1,6 @@
 'use strict'
 
+const awsMocks = require('./lib/aws-mocks.js')
 // npm
 const expect = require('chai').expect
 const request = require('superagent')
