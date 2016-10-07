@@ -178,7 +178,7 @@ describe('testing auth-router', function(){
       it('should respond with status 401', (done) => {
         request.get(`${url}/api/login`)
         // this has to be the same user and pass from mockUser
-        .auth('slug', '1234')
+        .auth('bad', this.tempPassword)
         .end((err, res) => {
           expect(res.status).to.equal(401)
           expect(res.text).to.equal('UnauthorizedError')
@@ -192,7 +192,7 @@ describe('testing auth-router', function(){
       it('should respond with status 401', (done) => {
         request.get(`${url}/api/login`)
         // this has to be the same user and pass from mockUser
-        .auth('slug', 'bad')
+        .auth(this.tempUser.username, 'bad')
         .end((err, res) => {
           expect(res.status).to.equal(401)
           expect(res.text).to.equal('UnauthorizedError')
