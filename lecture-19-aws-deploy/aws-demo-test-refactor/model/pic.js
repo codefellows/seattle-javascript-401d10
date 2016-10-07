@@ -12,4 +12,9 @@ const picSchema = mongoose.Schema({
   created: {type: Date, default: Date.now},
 })
 
-module.exports = mongoose.model('pic', picSchema)
+const Pic = module.exports = mongoose.model('pic', picSchema)
+
+//Pic.schema.path('name').validate(function(val) {
+  //return /(slug|byte)/.test(val)
+//})
+
