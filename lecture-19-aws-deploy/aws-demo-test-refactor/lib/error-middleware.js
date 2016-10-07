@@ -5,8 +5,7 @@ const debug = require('debug')('city:server')
 
 module.exports = function(err, req, res, next){
   debug('error middleware')
-  console.error('ERROR:', err.message)
-  console.log('Errorrrr.name', err.name)
+  debug('ERROR:', err.message)
 
   if (err.status){
     res.status(err.status).send(err.name)

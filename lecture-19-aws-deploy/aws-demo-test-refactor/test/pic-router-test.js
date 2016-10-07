@@ -1,6 +1,7 @@
 'use strict'
 
 // mock third party services
+require('./lib/test-env.js')
 const awsMocks = require('./lib/aws-mocks.js')
 
 // npm modules
@@ -16,7 +17,7 @@ const serverCtrl = require('./lib/server-ctrl.js')
 
 // module constants
 const server = require('../server.js')
-const url = 'http://localhost:3000'
+const url = `http://localhost:${process.env.PORT}`
 
 const examplePic = {
   name: 'sunburn',

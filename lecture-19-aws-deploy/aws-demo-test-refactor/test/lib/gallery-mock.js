@@ -11,7 +11,9 @@ module.exports = function(done){
     name: 'beach adventure',
     desc: 'not enough sun screan ouch',
   }
-  userMock.call(this, () => {
+  userMock.call(this, err => {
+    if (err) 
+      return done(err)
     exampleGallery.userID = this.tempUser._id.toString()
     new Gallery(exampleGallery).save()
     .then( gallery => {

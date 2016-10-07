@@ -17,7 +17,8 @@ module.exports = function(done){
     objectKey: awsMocks.uploadMock.Key,
   }
 
-  galleryMock.call(this, () => {
+  galleryMock.call(this, err => {
+    if (err) return done(err)
     examplePicData.userID = this.tempUser._id.toString()
     examplePicData.galleryID = this.tempGallery._id.toString()
     new Pic(examplePicData).save()
