@@ -57,16 +57,12 @@ picRouter.post('/api/gallery/:galleryID/pic', bearerAuth, upload.single('image')
   // then store monogo Pic
   // then respond to user
 
-  let s3data;
   Gallery.findById(req.params.galleryID)
   .catch(err => Promise.reject(createError(404, err.message)))
   .then(() => s3UploadPromise(params))  // IF FAILS 500 ERROR
-  .catch(err => Promise.reject(createError(500, err.message)))
-  .then(data => {
-    s3data = data
-    return del([`${dataDir}/*`])
-  })
-  .then(()=> {
+  .catch(err => err.status ? Promise.reject(err) : Promise.reject(createError(500, err.message)))
+  .then(s3data => {
+    del([`${dataDir}/*`])
     let picData = {
       name: req.body.name,
       desc: req.body.desc,
@@ -78,7 +74,10 @@ picRouter.post('/api/gallery/:galleryID/pic', bearerAuth, upload.single('image')
     return new Pic(picData).save()
   })
   .then(pic => res.json(pic))
-  .catch(next)
+  .catch(err => {
+    del([`${dataDir}/*`])
+    next(err)
+  })
 })
 
 picRouter.delete('/api/gallery/:galleryID/pic/:picID', bearerAuth, function(req, res, next){
@@ -103,7 +102,7 @@ picRouter.delete('/api/gallery/:galleryID/pic/:picID', bearerAuth, function(req,
     }
     return s3.deleteObject(params).promise()
   })
-  .catch(err => Promise.reject(createError(500, err.message)))
+  .catch(err => err.status ? Promise.reject(err) : Promise.reject(createError(500, err.message)))
   .then(s3data => {
     return Pic.findByIdAndRemove(req.params.picID)
   })

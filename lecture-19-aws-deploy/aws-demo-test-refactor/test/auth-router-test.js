@@ -52,7 +52,7 @@ describe('testing auth-router', function(){
         })
         .end((err, res) => {
           expect(res.status).to.equal(400)
-          expect(!!res.text).to.equal(true)
+          expect(res.text).to.equal('BadRequestError')
           done()
         })
       })
@@ -67,7 +67,7 @@ describe('testing auth-router', function(){
         })
         .end((err, res) => {
           expect(res.status).to.equal(400)
-          expect(!!res.text).to.equal(true)
+          expect(res.text).to.equal('BadRequestError')
           done()
         })
       })
@@ -82,7 +82,7 @@ describe('testing auth-router', function(){
         })
         .end((err, res) => {
           expect(res.status).to.equal(400)
-          expect(!!res.text).to.equal(true)
+          expect(res.text).to.equal('BadRequestError')
           done()
         })
       })
@@ -90,18 +90,45 @@ describe('testing auth-router', function(){
   })
 
   describe('testing GET /api/signup', function(){
-    describe('with valid body', function(){
+    describe('with valid auth', function(){
       before(done => mockUser.call(this, done))
-
       it('should return a token', (done) => {
         request.get(`${url}/api/login`)
         // this has to be the same user and pass from mockUser
-        .auth('slugbyte', '1234')
+        .auth(this.tempUser.username, this.tempPassword)
         .end((err, res) => {
           if (err)
             return done(err)
           expect(res.status).to.equal(200)
           expect(!!res.text).to.equal(true)
+          done()
+        })
+      })
+    })
+
+    describe('with bad username', function(){
+      before(done => mockUser.call(this, done))
+      it('should respond with status 401', (done) => {
+        request.get(`${url}/api/login`)
+        // this has to be the same user and pass from mockUser
+        .auth('slug', '1234')
+        .end((err, res) => {
+          expect(res.status).to.equal(401)
+          expect(res.text).to.equal('UnauthorizedError')
+          done()
+        })
+      })
+    })
+
+    describe('with bad password', function(){
+      before(done => mockUser.call(this, done))
+      it('should respond with status 401', (done) => {
+        request.get(`${url}/api/login`)
+        // this has to be the same user and pass from mockUser
+        .auth('slug', 'bad')
+        .end((err, res) => {
+          expect(res.status).to.equal(401)
+          expect(res.text).to.equal('UnauthorizedError')
           done()
         })
       })

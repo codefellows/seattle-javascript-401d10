@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=slug* ./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha -R nyan",
+    "test-debug": "DEBUG=slug* ./node_modules/mocha/bin/mocha"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,7 @@
     "aws-sdk-mock": "^1.5.0",
     "chai": "^3.5.0",
     "form-data": "^2.1.1",
+    "lorem-ipsum": "^1.0.3",
     "mocha": "^3.1.0",
     "superagent": "^2.3.0"
   }
