@@ -1,5 +1,6 @@
 'use strict'
 
+require('./lib/test-env.js')
 require('./lib/aws-mocks.js')
 
 // npm

@@ -26,9 +26,14 @@ mongoose.connect(process.env.MONGODB_URI)
 const PORT = process.env.PORT
 const app = express()
 
+
 // app middleware
 app.use(cors())
-app.use(morgan('dev'))
+if (process.env.NODE_ENV !== 'testing'){
+  let production = process.env.NODE_ENV === 'production'
+  let morganFormat = production ? 'common' : 'dev'
+  app.use(morgan(morganFormat))
+}
 
 // app routes
 app.use(picRouter)
