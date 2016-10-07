@@ -12,7 +12,7 @@ const debug = require('debug')('slugram:user')
 const Schema = mongoose.Schema
 
 const userSchema = Schema({
-  username: {type: String, required: true, unique: true},
+  username: {type: String, required: true, unique: true, minlength: 5},
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   findHash: {type: String, unique: true},

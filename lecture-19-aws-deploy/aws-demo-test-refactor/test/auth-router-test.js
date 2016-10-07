@@ -16,7 +16,7 @@ const url = `http://localhost:${process.env.PORT}`
 
 const exampleUser = {
   username: 'slugbyte',
-  password: '1234',
+  password: '12345678',
   email: 'slug@slug.slime',
 }
 
@@ -58,6 +58,57 @@ describe('testing auth-router', function(){
       })
     })
 
+    describe('with username < 5', function(){
+      it('should respond with status 400', (done) => {
+        request.post(`${url}/api/signup`)
+        .send({
+          username: 'slug',
+          password: exampleUser.password,
+          email: exampleUser.email,
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400)
+          expect(res.text).to.equal('BadRequestError')
+          done()
+        })
+      })
+    })
+
+    describe('with duplicate username', function(){
+      before( done => mockUser.call(this, done))
+      it('should respond with status 409', (done) => {
+        request.post(`${url}/api/signup`)
+        .send({
+          username: this.tempUser.username,
+          password: exampleUser.password,
+          email: exampleUser.email,
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(409)
+          expect(res.text).to.equal('ConflictError')
+          done()
+        })
+      })
+    })
+
+    describe('with duplicate email', function(){
+      before( done => mockUser.call(this, done))
+      it('should respond with status 409', (done) => {
+        request.post(`${url}/api/signup`)
+        .send({
+          username: exampleUser.username,
+          password: exampleUser.password,
+          email: this.tempUser.email,
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(409)
+          expect(res.text).to.equal('ConflictError')
+          done()
+        })
+      })
+    })
+
+
     describe('with no email', function(){
       it('should respond with status 400', (done) => {
         request.post(`${url}/api/signup`)
@@ -78,6 +129,22 @@ describe('testing auth-router', function(){
         request.post(`${url}/api/signup`)
         .send({
           email: exampleUser.email,
+          username: exampleUser.username,
+        })
+        .end((err, res) => {
+          expect(res.status).to.equal(400)
+          expect(res.text).to.equal('BadRequestError')
+          done()
+        })
+      })
+    })
+    
+    describe('with password.length < 8', function(){
+      it('should respond with status 400', (done) => {
+        request.post(`${url}/api/signup`)
+        .send({
+          email: exampleUser.email,
+          password: '124567', 
           username: exampleUser.username,
         })
         .end((err, res) => {

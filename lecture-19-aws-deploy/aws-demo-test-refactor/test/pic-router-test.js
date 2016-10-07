@@ -201,7 +201,7 @@ describe('testing pic-router', function(){
 
     describe('with invalid picID', function(){
       before(done => picMock.call(this, done))
-      it('should respond with status 400', done => {
+      it('should respond with status 404', done => {
         request.delete(`${url}/api/gallery/${this.tempGallery._id}/pic/${this.tempPic._id}bad`)
         .set({Authorization: `Bearer ${this.tempToken}`})
         .end((err, res) => {

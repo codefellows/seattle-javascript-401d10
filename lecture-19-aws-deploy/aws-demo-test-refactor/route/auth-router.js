@@ -18,7 +18,11 @@ authRouter.post('/api/signup', jsonParser, function(req, res, next){
   let user = new User(req.body)
 
   // checkfor password before running generatePasswordHash
-  if (!password) return next(createError(400, 'requires password'))
+  if (!password) 
+    return next(createError(400, 'requires password'))
+  if (password.length < 8) 
+    return next(createError(400, 'password must be 8 characters'))
+
   user.generatePasswordHash(password)
   .then( user => user.save()) // check for unique username with mongoose unique
   .then( user => user.generateToken())
