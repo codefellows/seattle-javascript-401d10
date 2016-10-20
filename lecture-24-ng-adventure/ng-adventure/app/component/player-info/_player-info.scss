@@ -1,0 +1,16 @@
+@import "theme";
+
+.player-info {
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: $brand-white;
+  border-radius: 10px;
+
+  p span {
+    color: $brand-2nd;
+    font-weight: bold;
+  }
+}
+
+
