@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+  <head>
+    <title> Cowsay Client </title>
+  </head>
+  <body>
+    <nav ng-controller="NavController as navCtrl">
+      <i class="fa fa-low-vision"> </i>
+      <ul>
+        <li ng-repeat="navItem in navCtrl.routes">
+          <a ng-href="{{navItem.url}}"> {{navItem.name}} </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section 
+      ng-controller="CowsayController as cowsayCtrl" 
+      ng-init="cowsayCtrl.currentCow = 'doge'">
+      <h1> {{cowsayCtrl.title}} </h1>
+      <form ng-submit="cowsayCtrl.speak(cowsayCtrl.text)" 
+        novalidate
+        name="cowsayForm"
+        ng-class="{'app-red': cowsayForm.$invalid}">
+        <input type="text" ng-model="cowsayCtrl.text" required ng-minlength="4"> 
+        <select ng-model="cowsayCtrl.currentCow"> 
+          <option ng-repeat="cowfile in cowsayCtrl.cowfiles" value="{{cowfile}}">
+            {{cowfile}}
+          </option>
+        </select>
+        <button type="button" ng-click="cowsayCtrl.undo()"> undo </button>
+        <button type="submit"> speak </button>
+      </form>
+      <pre>
+         {{cowsayCtrl.updateCow(cowsayCtrl.text)}}
+      </pre>
+
+      <h3 ng-if="!cowsayCtrl.spoken"> THIS WILL BE REMOVED FROM DOM</h3>
+      <p ng-hide="cowsayCtrl.spoken"> Waiting for yout to speak </p>
+      <pre ng-show="cowsayCtrl.spoken">
+        {{cowsayCtrl.spoken}}
+      </pre>
+    </section>
+  </body>
+</html>
