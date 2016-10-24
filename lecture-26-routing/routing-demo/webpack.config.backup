@@ -1,0 +1,70 @@
+'use strict';
+
+require('dotenv').load();
+const webpack = require('webpack');
+const HtmlPlugin = require('html-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const production = process.env.NODE_ENV === 'production';
+
+// non production plugins
+let plugins = [
+  new ExtractTextPlugin('bundle.css'),
+  new HtmlPlugin({
+    template: `${__dirname}/app/index.html`,
+  }),
+  webpack.DefinePlugin({
+    __API_URL__: JSON.stringify(process.env.API_URL),
+    __DEBUG__: JSON.stringify(!production),
+  }),
+];
+
+if (production) {
+  plugins = plugins.concat([
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false,
+      },
+    }),
+    new CleanPlugin(),
+  ]);
+}
+
+module.exports = {
+  entry: `${__dirname}/app/entry.js`,
+  plugins,
+  devtool: production ? false : 'eval',
+  output: {
+    path: 'build',
+    filename: production ? '[hash].js' : 'bundle.js',
+  },
+  sassLoader: {
+    includePaths: [`${__dirname}/app/scss/lib`],
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+      },
+      {
+        test: /\.html$/,
+        loader: 'html',
+      },
+      {
+        test: /\.(woff|ttf|eot).*/,
+        loader: 'url?limit=10000&name=font/[hash].[ext]',
+      },
+      {
+        test: /\.(gif|jpeg|jpg|bmp|png|tiff|svg).*/,
+        loader: 'url?limit=10000&name=image/[hash].[ext]',
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css!resolve-url!sass?sourceMap'),
+      },
+    ],
+  },
+};
