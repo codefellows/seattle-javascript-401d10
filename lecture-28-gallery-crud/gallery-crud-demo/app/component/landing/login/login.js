@@ -11,7 +11,7 @@ module.exports = {
 function LoginController($log, $location, authService){
   $log.debug('init loginCtrl');
   
-  // if there is a token goto /home
+   //if there is a token goto /home
   authService.getToken()
   .then(() => {
     $location.url('/home');
