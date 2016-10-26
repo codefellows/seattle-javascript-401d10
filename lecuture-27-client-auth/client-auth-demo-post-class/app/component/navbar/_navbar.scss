@@ -1,0 +1,19 @@
+.navbar {
+  .btn-logout {
+    display: none;
+    @media (min-width: 500px){
+      display: inline-block;
+    }
+  }
+
+  .btn-dropdown  {
+    padding: 10%;
+    span{
+      font-size: 1.5em;
+
+      @media (min-width: 500px){
+        display: none;
+      }
+    }
+  }
+}
