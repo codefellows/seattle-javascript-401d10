@@ -1,0 +1,46 @@
+<section class="login-form">
+  <form 
+    name="loginForm"
+    ng-submit="loginCtrl.login()" novalidate>
+    <div 
+      ng-class="{
+        'has-error': loginForm.username.$invalid, 
+        'has-success': loginForm.username.$valid,
+      }"
+      class="form-group">
+      <input type="text" 
+        name="username"
+        uib-tooltip="Username must have 5 charicters"
+        tooltip-enable="loginForm.$submitted && loginForm.username.$invalid"
+        tooltip-is-open="loginForm.$submitted && loginForm.username.$invalid &&
+        loginForm.username.$focus"
+        tooltip-placement="top-left"
+        tooltip-trigger="'focus'"
+        placeholder="Username" 
+        class="form-control"
+        required ng-minlength="5"
+        ng-model="loginCtrl.user.username">
+    </div>
+
+    <div 
+      ng-class="{
+        'has-error': loginForm.password.$invalid && loginForm.$submitted,
+        'has-success': loginForm.password.$valid,
+      }"
+      class="form-group">
+      <input type="password" name="password"
+        ng-disabled="loginForm.username.$invalid"
+        uib-tooltip="Password must have 8 charicters"
+        tooltip-enable="loginForm.$submitted && loginForm.password.$invalid"
+        tooltip-is-open="loginForm.$submitted && loginForm.password.$invalid &&
+        loginForm.username.$focus"
+        tooltip-placement="top-left"
+        tooltip-trigger="'focus'"
+        placeholder="Password" 
+        class="form-control has-error"
+        required ng-minlength="8"
+        ng-model="loginCtrl.user.password">
+    </div>
+    <button class="btn btn-primary"> Login </button>
+  </form>
+</section>
