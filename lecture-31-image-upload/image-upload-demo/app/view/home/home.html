@@ -1,0 +1,15 @@
+<main class="home">
+  <create-gallery> </create-gallery>
+
+  <nav class="gallery-list-container">
+    <ul >
+      <gallery-li ng-repeat="item in homeCtrl.galleries" 
+        gallery="item"
+        delete-done="homeCtrl.galleryDeleteDone(galleryData)"
+        ng-click="homeCtrl.currentGallery = item"> 
+      </gallery-li>
+    </ul>
+  </nav>
+
+  <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"> </thumbnail-container>
+</main>
