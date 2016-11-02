@@ -1,0 +1,34 @@
+<section class="create-gallery">
+  <button 
+    ng-if="!createGalleryCtrl.showForm"
+    class="btn btn-primary" ng-click="createGalleryCtrl.showForm = true"> Add Gallery </button>
+  <form name="createGalleryForm"
+    ng-if="createGalleryCtrl.showForm"
+    novalidate
+    ng-submit="createGalleryCtrl.createGallery()">
+
+    <div class="form-group">
+      <label for="name"> Name: </label>
+      <input name="name" 
+        class="form-control"
+        type="text"
+        uib-tooltip="name required"
+        ng-model="createGalleryCtrl.gallery.name"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="desc"> Description: </label>
+      <input name="desc" 
+        class="form-control"
+        type="text"
+        uib-tooltip="description required"
+        ng-model="createGalleryCtrl.gallery.desc"
+        required>
+    </div>
+    <button 
+      ng-click="createGalleryCtrl.showForm = false"
+      type="button" class="btn btn-danger"> Cancel </button>
+    <button class="btn btn-primary" type="submit"> + </button>
+  </form>
+</section>

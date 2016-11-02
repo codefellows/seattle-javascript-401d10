@@ -1,0 +1,42 @@
+@import "theme";
+
+.gallery-li {
+  // position:
+  // display:
+  // width hight
+  // margin
+  // padding
+  // text
+  // color
+  background-color: $app-white;
+  border-bottom: 2px solid $app-error;
+  h2 {
+    color: $app-active;
+  }
+
+  &:hover {
+    border-bottom: 2px solid $app-active;
+    h2 {
+      color: $app-secondary;
+    }
+  }
+
+
+  h2, p {
+    margin: 0px;
+    display: inline-block;
+    margin-left: 2%;
+  }
+
+  .glyphicon-pencil {
+    &:hover {
+      color: $app-secondary;
+    }
+  }
+
+  .glyphicon-trash {
+    &:hover {
+      color: $app-error;
+    }
+  }
+}
