@@ -1,0 +1,24 @@
+<main class="home"> 
+  <nav class="gallery-list-container">
+    <h2> <span ng-if="homeCtrl.galleries[0]"> {{homeCtrl.galleries[0].username}}'s </span> galleries </h2>
+
+    <input ng-model="homeCtrl.gallerySearchTerm" type="text" placeholder="Search">
+
+    <ul >
+      <gallery-li ng-repeat="item in homeCtrl.galleries | gallerySearch:homeCtrl.gallerySearchTerm" 
+        gallery="item"
+        delete-done="homeCtrl.galleryDeleteDone(galleryData)"
+        ng-click="homeCtrl.currentGallery = item"> 
+      </gallery-li>
+    </ul>
+    <create-gallery > </create-gallery>
+  </nav>
+
+  <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"> </thumbnail-container>
+</main>
+
+<!--<h1> {{"hello world" | toUpperCase:'before':'after' }} </h1>-->
+<!--playing with filte-->
+<!--<h2> {{'hello world' | uppercase}} </h2>-->
+<!--<input ng-model="homeCtrl.dateFormat"-->
+<!--<h3> today: {{ homeCtrl.today | date:homeCtrl.dateFormat }} </h3>-->

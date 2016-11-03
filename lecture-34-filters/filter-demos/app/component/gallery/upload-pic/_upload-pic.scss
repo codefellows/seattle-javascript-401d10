@@ -1,0 +1,32 @@
+@import  "theme";
+
+.upload-pic {
+  input, form {
+    margin-bottom: 2%;
+  }
+
+  .show-form-btn {
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
+
+  div.has-error { 
+      border-color: $app-error;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+
+
+  .drop-image-btn{
+    display: none;
+  }
+
+  .dragover {
+    .select-image-btn {
+      display: none;
+    }
+
+    .drop-image-btn {
+      display: inline-block;
+    }
+  }
+}
