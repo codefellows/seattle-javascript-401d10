@@ -1,0 +1,57 @@
+<div class="upload-pic">
+  <button 
+    ng-click="uploadPicCtrl.showForm = true"
+    class="btn btn-primary show-form-btn" 
+    ng-if="!uploadPicCtrl.showForm"> Add Pic </button>
+
+  <form 
+    name="uploadPicForm"
+    ng-if="uploadPicCtrl.showForm"
+    ng-submit="uploadPicCtrl.uploadPic()"
+    novalidate>
+
+    <div 
+      ng-class="{
+        'has-error': uploadPicForm.$submitted && uploadPicForm.name.$invalid,
+      }"
+      class="form-group">
+      <input 
+      name="name" 
+      class="form-control" 
+      required
+      type="text" 
+      ng-model="uploadPicCtrl.pic.name" 
+      placeholder="Name"> 
+    </div>
+
+    <div 
+      ng-class="{
+      'has-error': uploadPicForm.$submitted && uploadPicForm.desc.$invalid, 
+      }"
+      class="form-group">
+      <input name="desc" 
+        required
+        class="form-control" 
+        type="text" 
+        ng-model="uploadPicCtrl.pic.desc" 
+        placeholder="Description">
+    </div>
+
+    <div class="btn btn-default"
+      ngf-select
+      required
+      ngf-drop
+      ng-model="uploadPicCtrl.pic.file"
+      ngf-resize="{width: 700, quality: 1}"
+      ng-class="{
+      'has-error': uploadPicForm.$submitted && !uploadPicCtrl.pic.file,
+      'btn-success': uploadPicCtrl.pic.file}" >
+      <span class="select-image-btn"> Select Image </span>
+      <span class="drop-image-btn"> Drop Image </span>
+    </div>
+
+    <button class="btn btn-primary"> Upload Image </button>
+    <button type="button" class="btn btn-danger" ng-click="uploadPicCtrl.done()"> Cancel </button>
+    
+  </form>
+</div>

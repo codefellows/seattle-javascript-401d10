@@ -1,0 +1,49 @@
+@import "theme";
+
+.home {
+  padding: 2%;
+
+  h2 {
+    margin: 0px;
+  }
+
+  .gallery-list-container {
+    padding: 2%;
+    background-color: $app-white;
+    border: 2px solid $app-primary;
+    border-radius: 4px;
+
+    form {
+      padding-bottom: 2%;
+    }
+
+    ul {
+      padding: 0px;
+    }
+
+    li {
+      list-style: none;
+    }
+  }
+
+  .panel-heading {
+    background-color: $app-primary;
+    span {
+      font-weight: bold;
+      color: $app-secondary;
+    }
+
+    span:hover {
+      color: $app-black;
+    }
+  }
+
+  @media (min-width: 900px) {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    .gallery-list-container {
+    }
+  }
+}
+
