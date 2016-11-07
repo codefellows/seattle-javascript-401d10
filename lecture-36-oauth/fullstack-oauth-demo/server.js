@@ -34,6 +34,7 @@ let morganFormat = production ? 'common' : 'dev'
 app.use(morgan(morganFormat))
 
 // app routes
+app.use(express.static(`${__dirname}/build`));
 app.use(picRouter)
 app.use(authRouter)
 app.use(galleryRouter)
