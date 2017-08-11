@@ -2,7 +2,6 @@
 =====================================
 > Advanced Software Development  
 
-[![](https://img.shields.io/badge/YouTube-401d10-red.svg)](https://www.youtube.com/playlist?list=PLVngfM2hsbi86RFbvl4BPeaEu69IuaxGD)
 [![](https://img.shields.io/badge/canvas-401d10-blue.svg)](https://canvas.instructure.com/courses/1046705/modules)
 [![](https://img.shields.io/badge/Labs-401d10-yellow.svg)](https://github.com/codefellows-seattle-javascript-401d10)
 [![](https://img.shields.io/badge/slack-401d10-orange.svg)](https://codefellows.slack.com/messages/sea-javascript-401d10/)
